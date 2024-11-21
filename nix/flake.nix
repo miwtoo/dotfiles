@@ -13,12 +13,6 @@
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
       security.pam.enableSudoTouchIdAuth = true;
-      programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      # programs.git = {
-      #   enable = true;
-      #   userName  = "miwtoo";
-      #   userEmail = "miwyugioh@gmail.com";
-      # };
 
       users.users.USER.shell = pkgs.zsh;
       # List packages installed in system profile. To search by name, run:
