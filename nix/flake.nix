@@ -59,17 +59,21 @@
             pkgs.aldente
             pkgs.nixpkgs-fmt
             pkgs.google-cloud-sdk
+            pkgs.scrcpy
 
-            # Docker
-            pkgs.colima
-            # pkgs.docker
-            # pkgs.docker-compose
+            # Podman
+            pkgs.podman
+            pkgs.podman-tui
+            pkgs.podman-compose
 
+            pkgs.alt-tab-macos
+            pkgs.flutter319
             pkgs.bun
             pkgs.spaceship-prompt
             pkgs.zoxide
             pkgs.fira-code
           ];
+
 
         fonts.packages = with pkgs; [
           (nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -160,9 +164,14 @@
     {
       virtualisation.docker.enable = true;
       users.users.miwtoo.extraGroups = [ "docker" ];
-      virtualisation.docker.rootless = {
-        enable = true;
-        setSocketVariable = true;
+      virtualisation = {
+        podman = {
+          enable = true;
+          # Create a `docker` alias for podman, to use it as a drop-in replacement
+          dockerCompat = true;
+          # Required for containers under podman-compose to be able to talk to each other.
+          defaultNetwork.settings.dns_enabled = true;
+        };
       };
 
 
