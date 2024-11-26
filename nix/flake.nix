@@ -185,7 +185,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.miwtoo = import ./home.nix;
+            home-manager.users.miwtoo = import ./home/home.nix;
           }
         ];
       };
