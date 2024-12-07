@@ -13,6 +13,7 @@ in
   programs.direnv.enable = true;
 
   home.stateVersion = "24.05";
+  
 
   programs = {
     zsh = import ./zsh.nix { inherit config pkgs lib; };

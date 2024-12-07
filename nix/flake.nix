@@ -3,7 +3,7 @@
 
   inputs = {
     # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,10 +11,9 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     # Home Manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
-
   outputs =
     inputs@{ self
     , nix-darwin
@@ -33,46 +32,51 @@
         # $ nix-env -qaP | grep wget
         environment.systemPackages =
           [
+            # Development Tools
             pkgs.git
             pkgs.neovim
-            pkgs.mkalias
             pkgs.vscode
-            pkgs.alacritty
-            pkgs.google-chrome
-            pkgs.localsend
-            pkgs.spotify
-            pkgs.raycast
-            pkgs.maccy
-            pkgs.discord
-            pkgs.stats
-            pkgs.stow
-            # pkgs.flutter326
-            pkgs.cocoapods
             pkgs.jetbrains.idea-ultimate
-            # pkgs.jdk23
-            pkgs.direnv
             pkgs.devbox
-            pkgs.oh-my-zsh
-            pkgs.slack
-            pkgs.monaspace
+            pkgs.stow
+            pkgs.cocoapods
+            # pkgs.android-tools
             # pkgs.android-studio
-            pkgs.aldente
-            pkgs.nixpkgs-fmt
-            pkgs.google-cloud-sdk
-            pkgs.scrcpy
+            pkgs.jdk17
 
-            # Podman
+            # Containerization
             pkgs.podman
             pkgs.podman-tui
             pkgs.podman-compose
 
+            # Utilities
+            pkgs.scrcpy
+            pkgs.alacritty
             pkgs.alt-tab-macos
-            pkgs.flutter319
-            pkgs.bun
-            pkgs.spaceship-prompt
+            pkgs.raycast
+            pkgs.maccy
+            pkgs.unzip
+            pkgs.aldente
+            pkgs.mkalias
+            pkgs.google-chrome
+            pkgs.google-cloud-sdk
+            pkgs.localsend
             pkgs.zoxide
+            pkgs.spotify
+            pkgs.nixpkgs-fmt
+
+            # Communication and Collaboration
+            pkgs.slack
+            pkgs.discord
+
+            # Personalization and Theming
+            pkgs.stats
+            pkgs.spaceship-prompt
             pkgs.fira-code
+            pkgs.monaspace
           ];
+
+
 
 
         fonts.packages = with pkgs; [
@@ -86,10 +90,14 @@
 
         homebrew = {
           enable = true;
+          taps = [
+            "leoafarias/fvm"
+          ];
           brews = [
             "ollama"
             "mas"
             "thefuck"
+            "fvm"
           ];
           casks = [
             "dozer"
@@ -98,6 +106,10 @@
             "tableplus"
             "postman"
             "unnaturalscrollwheels"
+            "mongodb-compass"
+            "basecamp"
+            "notchnook"
+            "alt-tab"
           ];
           masApps = {
             Pages = 409201541;

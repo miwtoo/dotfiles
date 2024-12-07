@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   enable = true;
   enableCompletion = true;
@@ -17,7 +16,8 @@
     clean = "clear";
   };
   initExtra = ''
-
+    export ANDROID_HOME=$HOME/Library/Android/sdk
+    export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
   '';
   oh-my-zsh = {
     enable = true;
