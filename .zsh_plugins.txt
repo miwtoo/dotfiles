@@ -1,0 +1,10 @@
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/eza
+
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+
+zdharma-continuum/fast-syntax-highlighting kind:defer
+ajeetdsouza/zoxide
+Aloxaf/fzf-tab
